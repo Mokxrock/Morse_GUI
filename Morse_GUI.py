@@ -31,10 +31,7 @@ def shortBlink():
     time.sleep(0.25)
     red.off()
     time.sleep(0.25)
- # A pause or delay between each letter 
-def breakBetween():
-    red.off()
-    time.sleep(2)
+
 
 # Blink LED in Morse Code for all the letters
 def morsecode(letter):
