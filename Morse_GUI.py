@@ -146,7 +146,7 @@ def morsecode(letter):
         longBlink()
         shortBlink()
         shortBlink()        
-    else: 
+    else: # Prompt Message of Input it's not a alphabet letter 
         lbl.config(text = " Invalid input detected ")  
  # Check the inputs and Blink name in MorseCode
 def blinkLED():
