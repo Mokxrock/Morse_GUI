@@ -17,21 +17,26 @@ myFont = (tkinter.font.Font(family = 'Helvetica', size=15, weight="bold" ))
 
 GPIO.setmode(GPIO.BCM)
 # Event Functions
+
+# Long Blink of 1.5 seconds 
 def longBlink():
     red.on()
     time.sleep(1.5)
     red.off()
     time.sleep(0.25)
+    
+# Short Blink of 0.25 seconds 
 def shortBlink():
     red.on()
     time.sleep(0.25)
     red.off()
     time.sleep(0.25)
+ # A pause or delay between each letter 
 def breakBetween():
     red.off()
     time.sleep(2)
 
-    
+# Blink LED in Morse Code for all the letters
 def morsecode(letter):
     if(letter == "a" or letter == "A"): # ._
         shortBlink()
@@ -143,24 +148,24 @@ def morsecode(letter):
         shortBlink()        
     else: 
         lbl.config(text = " Invalid input detected ")  
-    
+ # Check the inputs and Blink name in MorseCode
 def blinkLED():
     inputs = inputtxt.get( );
-    if (len(inputs) <= 12):
+    if (len(inputs) <= 12): # Check if input contain maximum of 12 characters or less
         lbl.config(font=myFont, text = "Input: " + inputs + "   Length: " + str(len(inputs)))
         x=0  
-        while True:
+        while True: # Loop Each letter 
             if(x < len(inputs) ):
-                morsecode(inputs[x])
+                morsecode(inputs[x]) # Apply morsecode function into the index of each inputs
                 x=x+1
     else:
-        lbl.config(text = "Error Detected: Maximum 12 Characters or Less") 
+        lbl.config(text = "Error Detected: Maximum 12 Characters or Less") # Error message if input contain more then 12 characters
             
-    
-inputtxt = Entry(win, width = 50);
+# Textbox for entering a name  
+inputtxt = Entry(win, width = 50); # Design of input box 
 inputtxt.pack()
-
-blinkButton = Button(win, font=myFont, text= "Blink Time", command = blinkLED, bg= 'red', height = 1, width=10)
+# Button TO Blink start Blinking the LED
+blinkButton = Button(win, font=myFont, text= "Blink Time", command = blinkLED, bg= 'red', height = 1, width=10) 
 blinkButton.pack()
 lbl = Label(win, text="")
 lbl.pack()
